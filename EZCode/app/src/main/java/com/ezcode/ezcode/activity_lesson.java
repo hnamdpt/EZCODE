@@ -22,18 +22,21 @@ public class activity_lesson extends AppCompatActivity implements NavigationView
         setContentView(R.layout.activity_lesson);
         Toolbar toolbar = findViewById(R.id.toolbar);
         drawerLayout = findViewById(R.id.drawer_layout);
+
         navigationView = (NavigationView)findViewById(R.id.nav_view);
         webViewLesson = (WebView)findViewById(R.id.lesson_webview);
         navigationView.setNavigationItemSelectedListener(this);
+
         setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(null);// bo title
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,
                 R.string.navigation_drawer_open,R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
+        webViewLesson.loadUrl("file:///android_asset/lesson_html_1.html");
     }
-
     @Override
-    public void onBackPressed() {
+    public void onBackPressed() {// khi an nut back tren android
         if(drawerLayout.isDrawerOpen(GravityCompat.START)){
             drawerLayout.closeDrawer(GravityCompat.START);
         }else{
@@ -44,22 +47,6 @@ public class activity_lesson extends AppCompatActivity implements NavigationView
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-//        switch (menuItem.getItemId()){
-//            case R.id.lesson_html_1:
-////                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-////                            new MessageFragment()).commit();
-//                webViewLesson.loadUrl("file:///android_asset/login.html");
-//                break;
-//            case R.id.nav_profile:
-////                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-////                        new ChatFragment()).commit();
-//                webViewLesson.loadUrl("file:///android_asset/news.html");
-//                break;
-//        }
-//        switch (getResources().getResourceEntryName(menuItem.getItemId())){
-//            case "":
-//                break;
-//        }
         String lessonName = getResources().getResourceEntryName(menuItem.getItemId());
         webViewLesson.loadUrl("file:///android_asset/"+lessonName+".html");
         drawerLayout.closeDrawer(GravityCompat.START);

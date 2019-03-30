@@ -18,9 +18,18 @@
                 android:background="#00BCD4"
                 android:id="@+id/toolbar"
                 android:elevation="4dp"
-                app:title="Lesson"
+                android:gravity="center_horizontal"
                 >
-
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Lesson"
+                    android:layout_gravity="center"
+                    android:id="@+id/toolbar_title"
+                    android:textSize="20sp"
+                    android:textColor="#fff"
+                    android:fontFamily="sans-serif-medium"
+                    />
             </android.support.v7.widget.Toolbar>
         <!--<FrameLayout-->
             <!--android:id="@+id/fragment_lesson_content"-->
