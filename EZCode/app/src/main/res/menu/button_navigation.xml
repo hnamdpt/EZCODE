@@ -9,7 +9,7 @@
         android:icon="@drawable/ic_home">
     </item>
     <item android:id="@+id/nav_message"
-        android:title="Home"
+        android:title="Message"
         android:icon="@drawable/ic_chat_bubble_outline">
     </item>
 </menu>
