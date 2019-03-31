@@ -4,11 +4,156 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Đây là activity Exercise"
-        android:layout_centerInParent="true"
-        android:textSize="30sp"
-        />
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#00BCD4"
+        android:id="@+id/toolbar_exercise"
+        android:elevation="4dp"
+        android:gravity="center_horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Exercise"
+            android:layout_gravity="center"
+            android:id="@+id/toolbar_title_execise"
+            android:textSize="20sp"
+            android:textColor="#fff"
+            android:fontFamily="sans-serif-medium"
+            />
+
+    </android.support.v7.widget.Toolbar>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_below="@+id/toolbar_exercise"
+        android:weightSum="15"
+        android:paddingRight="20dp"
+        android:paddingLeft="20dp"
+
+
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3"
+            android:background="#FFFFFF"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            android:weightSum="9"
+            android:id="@+id/ll_html"
+            android:elevation="2dp"
+
+            >
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="6"
+                android:orientation="vertical"
+                android:gravity="center_vertical"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="HTML"
+                    android:layout_gravity="center"
+                    android:fontFamily="sans-serif-medium"
+                    android:textSize="35sp"
+                    android:textColor="#f15931"
+
+                    />
+            </LinearLayout>
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:src="@drawable/logo_html"
+                android:padding="30dp"
+                android:background="#f15931"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3"
+            android:background="#FFFFFF"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            android:weightSum="9"
+            android:id="@+id/ll_css"
+            android:elevation="2dp"
+            >
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="6"
+                android:orientation="vertical"
+                android:gravity="center_vertical"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="CSS"
+                    android:textAllCaps="true"
+                    android:layout_gravity="center"
+                    android:fontFamily="sans-serif-medium"
+                    android:textSize="35dp"
+                    android:textColor="#007dc6"
+                    />
+
+            </LinearLayout>
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:src="@drawable/logo_css"
+                android:padding="30dp"
+                android:background="#007dc6"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3"
+            android:background="#FFFFFF"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            android:weightSum="9"
+            android:id="@+id/ll_javascript"
+            android:elevation="2dp"
+            >
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="6"
+                android:orientation="vertical"
+                android:gravity="center_vertical"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="JAVASCRIPT"
+                    android:textAllCaps="true"
+                    android:layout_gravity="center"
+                    android:fontFamily="sans-serif-medium"
+                    android:textSize="30sp"
+                    android:textColor="#f58233"
+                    />
+
+            </LinearLayout>
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:src="@drawable/logo_javascript"
+                android:padding="30dp"
+                android:background="#f58233"
+                />
+        </LinearLayout>
+    </LinearLayout>
+
 </RelativeLayout>

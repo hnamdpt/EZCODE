@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.ezcode.ezcode">
-
-    <uses-permission android:name="android.permission.INTERNET" />
+    package="com.ezcode.onlinequizapp">
 
     <application
         android:allowBackup="true"
@@ -11,16 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity_play_exercise"></activity>
-        <activity
-            android:name=".PlayVideo"
-            android:configChanges="orientation|screenSize"></activity>
-        <activity android:name=".activity_exercise" />
-        <activity android:name=".activity_examination" />
-        <activity android:name=".activity_practice" />
-        <activity android:name=".activity_lesson" />
-        <activity android:name=".MainActivity" />
-        <activity android:name=".activity_login">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
