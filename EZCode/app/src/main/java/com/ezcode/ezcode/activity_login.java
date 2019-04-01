@@ -1,10 +1,15 @@
 package com.ezcode.ezcode;
 
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.os.Handler;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -13,12 +18,25 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.facebook.AccessToken;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
+
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 public class activity_login extends AppCompatActivity {
 
@@ -26,8 +44,10 @@ public class activity_login extends AppCompatActivity {
     TextView tvDescription;
     Button btnLogin;
     EditText edtEmail,edtPassword;
+    CallbackManager callbackManager;
     FirebaseAuth mAuth;
     String TAG = "LOGIN";
+    LoginButton loginButton;
     Handler handler = new Handler();
     Runnable runnable= new Runnable() {
         @Override
@@ -49,7 +69,16 @@ public class activity_login extends AppCompatActivity {
         edtEmail = (EditText)findViewById(R.id.login_email);
         edtPassword = (EditText)findViewById(R.id.login_password);
         tvDescription = (TextView)findViewById(R.id.tv_description);
+        loginButton = (LoginButton)findViewById(R.id.btn_loginfb);
         mAuth = FirebaseAuth.getInstance();
+        callbackManager = CallbackManager.Factory.create();
+        loginButton.setReadPermissions("email");
+        loginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                signIn();
+            }
+        });
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,8 +86,57 @@ public class activity_login extends AppCompatActivity {
 
             }
         });
+//        printKeyHash();
         handler.postDelayed(runnable,2000);
+
     }
+
+    private void signIn() {
+        loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                handleFacebookAccessToken(loginResult.getAccessToken());
+            }
+
+            @Override
+            public void onCancel() {
+
+            }
+
+            @Override
+            public void onError(FacebookException error) {
+
+            }
+        });
+    }
+
+    private void handleFacebookAccessToken(AccessToken accessToken) {
+        AuthCredential credential = FacebookAuthProvider.getCredential(accessToken.getToken());
+        mAuth.signInWithCredential(credential)
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(activity_login.this,"loi cmnr",Toast.LENGTH_LONG).show();
+                        Log.e("ERROR_EDMT",e.getMessage());
+
+                    }
+                }).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+            @Override
+            public void onSuccess(AuthResult authResult) {
+                String email = authResult.getUser().getEmail();
+                Toast.makeText(activity_login.this,"LOGIN WITH EMAIL: "+email,Toast.LENGTH_LONG).show();
+                FirebaseUser user = mAuth.getCurrentUser();
+                Intent intent = new Intent(activity_login.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        callbackManager.onActivityResult(requestCode,resultCode,data);
+    }
+
     void login(){
         String email = edtEmail.getText().toString();
         String password = edtPassword.getText().toString();
@@ -84,5 +162,19 @@ public class activity_login extends AppCompatActivity {
                     }
                 });
 
+    }
+    private void printKeyHash(){
+        try{
+            PackageInfo info = getPackageManager().getPackageInfo("com.ezcode.loginfacebookfirebase", PackageManager.GET_SIGNATURES);
+            for(Signature signature:info.signatures){
+                MessageDigest messageDigest =MessageDigest.getInstance("SHA");
+                messageDigest.update(signature.toByteArray());
+                Log.e("KEYHASH", Base64.encodeToString(messageDigest.digest(),Base64.DEFAULT));
+            }
+        }catch (PackageManager.NameNotFoundException e){
+            e.printStackTrace();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
     }
 }

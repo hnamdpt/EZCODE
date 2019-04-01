@@ -9,43 +9,43 @@
         <menu>
             <item
                 android:id="@+id/lesson_html_1"
-                android:title="Share">
+                android:title="Html element">
             </item>
             <item
                 android:id="@+id/lesson_html_2"
-                android:title="Share">
+                android:title="Html attribute">
             </item>
             <item
                 android:id="@+id/lesson_html_3"
-                android:title="Share">
+                android:title="Html comment">
             </item>
             <item
                 android:id="@+id/lesson_html_4"
-                android:title="Share">
+                android:title="Html style">
             </item>
             <item
                 android:id="@+id/lesson_html_5"
-                android:title="Share">
+                android:title="Html color">
             </item>
             <item
                 android:id="@+id/lesson_html_6"
-                android:title="Share">
+                android:title="Html responsive">
             </item>
             <item
                 android:id="@+id/lesson_html_7"
-                android:title="Share">
+                android:title="Html centerd">
             </item>
             <item
                 android:id="@+id/lesson_html_8"
-                android:title="Share">
+                android:title="Heading">
             </item>
             <item
                 android:id="@+id/lesson_html_9"
-                android:title="Share">
+                android:title="Link">
             </item>
             <item
                 android:id="@+id/lesson_html_10"
-                android:title="Share">
+                android:title="Line breaks">
             </item>
         </menu>
     </item>
@@ -55,43 +55,43 @@
         <menu>
             <item
                 android:id="@+id/lesson_css_1"
-                android:title="Share">
+                android:title="Css1 ">
             </item>
             <item
                 android:id="@+id/lesson_css_2"
-                android:title="Share">
+                android:title="Css2">
             </item>
             <item
                 android:id="@+id/lesson_css_3"
-                android:title="Share">
+                android:title="Css3">
             </item>
             <item
                 android:id="@+id/lesson_css_4"
-                android:title="Share">
+                android:title="Css4">
             </item>
             <item
                 android:id="@+id/lesson_css_5"
-                android:title="Share">
+                android:title="Css5">
             </item>
             <item
                 android:id="@+id/lesson_css_6"
-                android:title="Share">
+                android:title="Css6">
             </item>
             <item
                 android:id="@+id/lesson_css_7"
-                android:title="Share">
+                android:title="Css7">
             </item>
             <item
                 android:id="@+id/lesson_css_8"
-                android:title="Share">
+                android:title="Css8">
             </item>
             <item
                 android:id="@+id/lesson_css_9"
-                android:title="Share">
+                android:title="Css9">
             </item>
             <item
                 android:id="@+id/lesson_css_10"
-                android:title="Share">
+                android:title="Css10">
             </item>
         </menu>
     </item>
@@ -101,43 +101,43 @@
         <menu>
             <item
                 android:id="@+id/lesson_js_1"
-                android:title="Share">
+                android:title="Javascript">
             </item>
             <item
                 android:id="@+id/lesson_js_2"
-                android:title="Share">
+                android:title="Javascript">
             </item>
             <item
                 android:id="@+id/lesson_js_3"
-                android:title="Share">
+                android:title="Javascript">
             </item>
             <item
                 android:id="@+id/lesson_js_4"
-                android:title="Share">
+                android:title="Javascript">
             </item>
             <item
                 android:id="@+id/lesson_js_5"
-                android:title="Share">
+                android:title="Javascript">
             </item>
             <item
                 android:id="@+id/lesson_js_6"
-                android:title="Share">
+                android:title="Javascript">
             </item>
             <item
                 android:id="@+id/lesson_js_7"
-                android:title="Share">
+                android:title="Javascript">
             </item>
             <item
                 android:id="@+id/lesson_js_8"
-                android:title="Share">
+                android:title="Javascript">
             </item>
             <item
                 android:id="@+id/lesson_js_9"
-                android:title="Share">
+                android:title="Javascript">
             </item>
             <item
                 android:id="@+id/lesson_js_10"
-                android:title="Share">
+                android:title="Javascript">
             </item>
         </menu>
     </item>

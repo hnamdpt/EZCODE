@@ -26,19 +26,26 @@ public class activity_play_exercise extends AppCompatActivity {
     DatabaseReference mData;
     TextView tv_question,tv_answerA,tv_answerB,tv_answerC,tv_answerD,tv_titleQuestion,tv_coutQuestion;
     ArrayList<Test> listTest;
-    int countQuestion;
+    int countQuestion = 0;
     int score=0;
     Handler handler = new Handler();
     Runnable runnable = new Runnable() {
         @Override
         public void run() {
             countQuestion++;
-            tv_coutQuestion.setText(countQuestion+"/"+listTest.size());
+            int x=countQuestion+1;
+
+
             if(countQuestion<listTest.size()){
                 setTest(countQuestion);
+                tv_titleQuestion.setText("Question "+x);
+                tv_coutQuestion.setText(x+"/"+listTest.size());
             }
             if(countQuestion>=listTest.size()){
                 Toast.makeText(activity_play_exercise.this,"Correct: "+ score+" / "+listTest.size(),Toast.LENGTH_LONG).show();
+            }
+            if(x<listTest.size()){
+
             }
 
         }
@@ -90,6 +97,9 @@ public class activity_play_exercise extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 //                Toast.makeText(activity_play_exercise.this,listTest.get(0).getQuestion(),Toast.LENGTH_SHORT).show();
                 setTest(0);
+
+                tv_coutQuestion.setText("1/"+listTest.size());
+                tv_titleQuestion.setText("Question 1");
                 handlerClickAnswer();
             }
 

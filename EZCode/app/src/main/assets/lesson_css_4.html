@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>learn css</title>
+
+		<!-- Bootstrap CSS -->
+		 <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Our Custom CSS -->
+	    <link rel="stylesheet" href="css/style.css">
+	    <link rel="stylesheet" href="css/w3.css">
+		
+	    <!-- Font Awesome JS -->
+	    <script defer src="js/solid.js"></script>
+	    <script defer src="js/fontawesome.js"></script>
+
+		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+	</head>
+	<body>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<h1>CSS TUTORIAL</h1>	
+				</div>			
+			</div>		
+			<div class="row">
+				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+					<a href="lesson_css_5.html"><button type="button" class="btn btn-success">NEXT</button></a>
+				</div>			
+			</div>	
+			<div class="line" style="margin-top: 0px; padding-top: 0px;"></div>
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<h1>CSS Selector (Continue)</h1>
+					<p>A CSS rule-set consists of a selector and a declaration block:
+					</p>
+				</div>
+			</div>
+		<div class="line" style="margin-top: 0px; padding-top: 0px;"></div>
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<h1>The class Selector</h1>
+					<p>To select elements with a specific class, write a period (.) character, followed by the name of the class.<br>
+
+						In the example below, all HTML elements with class="center" will be red and center-aligned:
+					</p>
+				</div>
+			</div>
+			<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 example">
+				 <h2>Example</h2>
+                        <div class="content" style="background-color: #fff;">
+                            <span class="cssselectorcolor" style="color:brown">
+							.center 
+							<span class="cssdelimitercolor" style="color:black">{</span>
+							<span class="csspropertycolor" style="color:red"><br>&nbsp; text-align
+							<span class="csspropertyvaluecolor" style="color:mediumblue">
+							<span class="cssdelimitercolor" style="color:black">:</span> center
+							<span class="cssdelimitercolor" style="color:black">;</span></span><br>&nbsp;&nbsp;color
+							<span class="csspropertyvaluecolor" style="color:mediumblue">
+							<span class="cssdelimitercolor" style="color:black">:</span> red
+							<span class="cssdelimitercolor" style="color:black">;</span></span><br></span>
+							<span class="cssdelimitercolor" style="color:black">}</span>
+							</span>
+                        </div> 
+                <button type="button" class="btn btn-success" style="margin-top: 10px;">Try it</button> 
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<p>You can also specify that only specific HTML elements should be affected by a class.
+				</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 example">
+				 <h2>Example</h2>
+		                <div class="content" style="background-color: #fff;">
+		                    <span class="cssselectorcolor" style="color:brown">
+							p .center 
+							<span class="cssdelimitercolor" style="color:black">{</span>
+							<span class="csspropertycolor" style="color:red"><br>&nbsp; text-align
+							<span class="csspropertyvaluecolor" style="color:mediumblue">
+							<span class="cssdelimitercolor" style="color:black">:</span> center
+							<span class="cssdelimitercolor" style="color:black">;</span></span><br>&nbsp;&nbsp;color
+							<span class="csspropertyvaluecolor" style="color:mediumblue">
+							<span class="cssdelimitercolor" style="color:black">:</span> red
+							<span class="cssdelimitercolor" style="color:black">;</span></span><br></span>
+							<span class="cssdelimitercolor" style="color:black">}</span>
+							</span>
+		                </div> 
+		        <button type="button" class="btn btn-success" style="margin-top: 10px;">Try it</button> 
+			</div>
+		</div>
+		<div class="line" style="margin-top: 0px; padding-top: 0px;"></div>
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<h1>Grouping Selectors</h1>
+				<p>If you have elements with the same style definitions, like this:
+				</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 example">
+				 <h2>Example</h2>
+                <div class="content" style="background-color: #fff;">
+                    <span class="cssselectorcolor" style="color:brown">
+					h1
+					<span class="cssdelimitercolor" style="color:black">{</span>
+					<span class="csspropertycolor" style="color:red"><br>
+					&nbsp;&nbsp;text-align<span class="csspropertyvaluecolor" style="color:mediumblue">
+					<span class="cssdelimitercolor" style="color:black">:</span> center
+					<span class="cssdelimitercolor" style="color:black">;</span></span><br>&nbsp;&nbsp;color
+					<span class="csspropertyvaluecolor" style="color:mediumblue">
+					<span class="cssdelimitercolor" style="color:black">:</span> red
+					<span class="cssdelimitercolor" style="color:black">;</span></span><br>
+					</span>
+					<span class="cssdelimitercolor" style="color:black">}</span><br>
+					<br>h2
+					<span class="cssdelimitercolor" style="color:black">{</span>
+					<span class="csspropertycolor" style="color:red"><br>
+					&nbsp;
+					text-align<span class="csspropertyvaluecolor" style="color:mediumblue">
+					<span class="cssdelimitercolor" style="color:black">:</span> center
+					<span class="cssdelimitercolor" style="color:black">;</span>
+					</span><br>&nbsp; color<span class="csspropertyvaluecolor" style="color:mediumblue">
+					<span class="cssdelimitercolor" style="color:black">:</span> red
+					<span class="cssdelimitercolor" style="color:black">;</span></span><br></span>
+					<span class="cssdelimitercolor" style="color:black">}</span><br>
+					<br>p
+					<span class="cssdelimitercolor" style="color:black">{</span>
+					<span class="csspropertycolor" style="color:red"><br>
+					&nbsp;&nbsp;text-align<span class="csspropertyvaluecolor" style="color:mediumblue">
+					<span class="cssdelimitercolor" style="color:black">:</span> center<span class="cssdelimitercolor" style="color:black">;</span></span><br>&nbsp;&nbsp;color
+					<span class="csspropertyvaluecolor" style="color:mediumblue">
+					<span class="cssdelimitercolor" style="color:black">:</span> red
+					<span class="cssdelimitercolor" style="color:black">;</span></span><br>
+					</span><span class="cssdelimitercolor" style="color:black">}</span> </span>
+                </div> 
+		        <button type="button" class="btn btn-success" style="margin-top: 10px;">Try it</button> 
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<p>To group selectors, separate each selector with a comma.<br>
+
+					In the example below we have grouped the selectors from the code above:
+				</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 example">
+				 <h2>Example</h2>
+                <div class="content" style="background-color: #fff;">
+                    <span class="cssselectorcolor" style="color:brown">
+					h1, h2, p
+					<span class="cssdelimitercolor" style="color:black">{</span>
+					<span class="csspropertycolor" style="color:red"><br>
+					&nbsp;text-align
+					<span class="csspropertyvaluecolor" style="color:mediumblue">
+					<span class="cssdelimitercolor" style="color:black">:</span> center
+					<span class="cssdelimitercolor" style="color:black">;</span></span><br>&nbsp;&nbsp;color
+					<span class="csspropertyvaluecolor" style="color:mediumblue">
+					<span class="cssdelimitercolor" style="color:black">:</span> red
+					<span class="cssdelimitercolor" style="color:black">;</span></span><br></span>
+					<span class="cssdelimitercolor" style="color:black">}</span> </span>
+                </div> 
+		        <button type="button" class="btn btn-success" style="margin-top: 10px;">Try it</button> 
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"  style="margin-top: 10px;">
+			  <a href="lesson_css_5.html"><button type="button" class="btn btn-success">NEXT</button></a>
+			</div>      
+		</div>  
+		</div>
+		
+		<!-- jQuery -->
+		 <script src="js/jquery-3.3.1.slim.min.js"></script>
+    	<!-- Popper.JS -->
+		<script src="js/popper.min.js"></script>
+		<!-- Bootstrap JS -->
+		<script src="js/bootstrap.min.js"></script>
+
+		<script type="text/javascript">
+		$(document).ready(function () {
+		    $('#sidebarCollapse').on('click', function () {
+		        $('#sidebar').toggleClass('active');
+		    });
+		});
+		</script>
+	</body>
+</html>
