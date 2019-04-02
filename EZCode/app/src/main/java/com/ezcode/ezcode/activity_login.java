@@ -7,6 +7,7 @@ import android.content.pm.Signature;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.view.GravityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Base64;
@@ -18,10 +19,12 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ezcode.ezcode.model.User;
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
+import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -34,6 +37,7 @@ import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -42,12 +46,14 @@ public class activity_login extends AppCompatActivity {
 
     RelativeLayout rellay1,rellay2;
     TextView tvDescription;
-    Button btnLogin;
+    Button btnLogin,sigup_btn;
     EditText edtEmail,edtPassword;
     CallbackManager callbackManager;
     FirebaseAuth mAuth;
+    DatabaseReference mData;
     String TAG = "LOGIN";
     LoginButton loginButton;
+
     Handler handler = new Handler();
     Runnable runnable= new Runnable() {
         @Override
@@ -70,9 +76,11 @@ public class activity_login extends AppCompatActivity {
         edtPassword = (EditText)findViewById(R.id.login_password);
         tvDescription = (TextView)findViewById(R.id.tv_description);
         loginButton = (LoginButton)findViewById(R.id.btn_loginfb);
+        sigup_btn = (Button)findViewById(R.id.sigup_btn);
         mAuth = FirebaseAuth.getInstance();
+        mData = FirebaseDatabase.getInstance().getReference();
         callbackManager = CallbackManager.Factory.create();
-        loginButton.setReadPermissions("email");
+        loginButton.setReadPermissions("email","public_profile");
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -84,6 +92,13 @@ public class activity_login extends AppCompatActivity {
             public void onClick(View v) {
                 login();
 
+            }
+        });
+        sigup_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(activity_login.this, activity_sigup.class);
+                startActivity(intent);
             }
         });
 //        printKeyHash();
@@ -125,7 +140,20 @@ public class activity_login extends AppCompatActivity {
             public void onSuccess(AuthResult authResult) {
                 String email = authResult.getUser().getEmail();
                 Toast.makeText(activity_login.this,"LOGIN WITH EMAIL: "+email,Toast.LENGTH_LONG).show();
+
+
                 FirebaseUser user = mAuth.getCurrentUser();
+
+                boolean isNewUser = authResult.getAdditionalUserInfo().isNewUser();
+                if(isNewUser){
+                    String _displayName = user.getDisplayName();
+                    String _email = user.getEmail();
+                    String _avatarUrl = user.getPhotoUrl()+"?type=large";
+                    int _point = 0;
+                    User newUser = new User(_displayName,_email,_avatarUrl,_point);
+                    mData.child("User").child(user.getUid()).setValue(newUser);
+
+                }
                 Intent intent = new Intent(activity_login.this, MainActivity.class);
                 startActivity(intent);
             }
@@ -140,6 +168,7 @@ public class activity_login extends AppCompatActivity {
     void login(){
         String email = edtEmail.getText().toString();
         String password = edtPassword.getText().toString();
+
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -176,5 +205,21 @@ public class activity_login extends AppCompatActivity {
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
+    }
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+           if(currentUser!=null){
+            Intent intent = new Intent(this,MainActivity.class);
+            this.startActivity(intent);
+        }
+    }
+    @Override
+    public void onBackPressed() {// khi an nut back tren android
+        moveTaskToBack(true);
+        android.os.Process.killProcess(android.os.Process.myPid());
+        System.exit(1);
     }
 }
