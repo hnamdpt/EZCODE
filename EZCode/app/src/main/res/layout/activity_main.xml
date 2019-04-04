@@ -7,7 +7,9 @@
     <FrameLayout
         android:id="@+id/fragment_main_content"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_above="@+id/navigation_butttom"
+        >
     </FrameLayout>
 
 
@@ -17,5 +19,8 @@
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:background="?android:attr/windowBackground"
-        app:menu="@menu/button_navigation"></android.support.design.widget.BottomNavigationView>
+        app:menu="@menu/button_navigation"
+        app:itemHorizontalTranslationEnabled="false"
+        app:labelVisibilityMode="unlabeled"
+        ></android.support.design.widget.BottomNavigationView>
 </RelativeLayout>

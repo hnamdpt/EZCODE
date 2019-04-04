@@ -1,15 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/nav_profile"
-        android:title="Me"
-        android:icon="@drawable/ic_person_outline">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/nav_message"
+        android:title="@null"
+        android:icon="@drawable/ic_chat_bubble_outline"
+        app:labelVisibilityMode="unlabeled"
+        app:showAsAction="ifRoom"
+        >
     </item>
     <item android:id="@+id/nav_home"
-        android:title="Home"
-        android:icon="@drawable/ic_home">
+        android:title="@null"
+        android:icon="@drawable/ic_home"
+        app:labelVisibilityMode="unlabeled"
+        app:showAsAction="ifRoom"
+        >
     </item>
-    <item android:id="@+id/nav_message"
-        android:title="Message"
-        android:icon="@drawable/ic_chat_bubble_outline">
+
+    <item android:id="@+id/nav_profile"
+        android:title="@null"
+        android:icon="@drawable/ic_person_outline"
+        app:labelVisibilityMode="unlabeled"
+        app:showAsAction="ifRoom"
+        >
     </item>
 </menu>

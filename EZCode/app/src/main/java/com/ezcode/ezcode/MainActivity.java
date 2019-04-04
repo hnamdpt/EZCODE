@@ -13,21 +13,66 @@ import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.ezcode.ezcode.model.Chat;
+import com.ezcode.ezcode.model.ChatAdapter;
 import com.facebook.login.LoginManager;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.gson.Gson;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.net.URISyntaxException;
+import java.util.ArrayList;
+
+import io.socket.client.IO;
+import io.socket.client.Socket;
+import io.socket.emitter.Emitter;
 
 public class MainActivity extends AppCompatActivity {
     BottomNavigationView buttonNavigation;
+    public static ArrayList<Chat> arrChat;
+    public  static Socket mSocket;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        arrChat = new ArrayList<Chat>();
+        try {
+            mSocket = IO.socket("https://hnamdpt-ezcode.herokuapp.com/");
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
+        mSocket.connect();
         buttonNavigation = (BottomNavigationView)findViewById(R.id.navigation_butttom);
         buttonNavigation.setOnNavigationItemSelectedListener(navListen);
         buttonNavigation.setSelectedItemId(R.id.nav_home);
+        mSocket.on("server-send-chat",onReciveChat);
 
 //        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_main_content,new HomeFragment()).commit();
     }
+    private Emitter.Listener onReciveChat = new Emitter.Listener() {
+        @Override
+        public void call(final Object... args) {
+            if(MainActivity.this == null)
+                return;
+            MainActivity.this.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    JSONObject object = (JSONObject) args[0];
+                    try {
+                        String chatJson = (String)object.getString("noidung");
+                        Gson gson = new Gson();
+                        Chat chat = gson.fromJson(chatJson,Chat.class);
+                        MainActivity.arrChat.add(chat);
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+        }
+    };
     private BottomNavigationView.OnNavigationItemSelectedListener navListen = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -68,4 +113,6 @@ public class MainActivity extends AppCompatActivity {
             }
         }, 2000);
     }
+
+
 }

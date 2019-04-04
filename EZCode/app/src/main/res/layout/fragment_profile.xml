@@ -11,36 +11,22 @@
         <android.support.v7.widget.Toolbar
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="#9016A5"
+            android:background="#773883"
             android:id="@+id/toolbar_practice"
-            android:elevation="10dp"
-            android:gravity="center_horizontal">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:weightSum="10"
-                >
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="Profile"
-                    android:layout_gravity="center"
-                    android:id="@+id/toolbar_title"
+            android:elevation="4dp"
+            android:gravity="center_horizontal"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Profile"
+                android:layout_gravity="center"
+                android:id="@+id/toolbar_title"
+                android:textSize="20sp"
+                android:textColor="#fff"
+                android:fontFamily="sans-serif-medium"
 
-                    android:textSize="20sp"
-                    android:textColor="#fff"
-                    android:fontFamily="sans-serif-medium"
-                    android:layout_weight="8"
-                    />
-                <Button
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="right"
-                    android:background="@drawable/setting"
-                    android:layout_weight="2"
-                    />
-            </LinearLayout>
+                />
 
         </android.support.v7.widget.Toolbar>
         <LinearLayout

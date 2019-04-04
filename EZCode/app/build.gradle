@@ -37,5 +37,10 @@ dependencies {
     implementation 'com.facebook.android:facebook-android-sdk:[4,5)'
     implementation 'de.hdodenhof:circleimageview:2.1.0'
     implementation 'com.google.firebase:firebase-storage:16.1.0'
+    implementation ('io.socket:socket.io-client:1.0.0') {
+        // excluding org.json which is provided by Android
+        exclude group: 'org.json', module: 'json'
+        implementation 'com.google.code.gson:gson:2.8.2'
+    }
 }
 apply plugin: 'com.google.gms.google-services'
