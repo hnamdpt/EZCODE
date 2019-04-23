@@ -46,8 +46,6 @@ public class MessageFragment extends Fragment {
     User user;
     ArrayList<Chat> arrChat;
     ChatAdapter chatAdapter;
-
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -57,7 +55,7 @@ public class MessageFragment extends Fragment {
         editMessage = (EditText)view.findViewById(R.id.edit_message);
         mAuth= FirebaseAuth.getInstance();
         mData = FirebaseDatabase.getInstance().getReference();
-        setUser();
+        user = MainActivity.user;
         chatAdapter = new ChatAdapter(getContext(),R.layout.chat_item_custom,MainActivity.arrChat);
         listViewMessage.setAdapter(chatAdapter);
 //        try {
@@ -76,16 +74,13 @@ public class MessageFragment extends Fragment {
                     chat.setUserName(user.getDisplayName());
                     chat.setChatContent(editMessage.getText().toString());
                     Gson gson = new Gson();
-                   String chatJson = gson.toJson(chat);
-                    mSocket.emit("client-send-chat",chatJson);
+                    String chatJson = gson.toJson(chat);
+                    MainActivity.mSocket.emit("client-send-chat",chatJson);
                     editMessage.setText("");
                 }
             }
         });
-        mSocket.on("server-send-chat",onReciveChat);
-
-
-
+        MainActivity.mSocket.on("server-send-chat",onReciveChat);
         return view;
     }
     private Emitter.Listener onReciveChat = new Emitter.Listener() {
@@ -101,6 +96,7 @@ public class MessageFragment extends Fragment {
                         String chatJson = (String)object.getString("noidung");
                         Gson gson = new Gson();
                         Chat chat = gson.fromJson(chatJson,Chat.class);
+                        MainActivity.arrChat.add(chat);
                         chatAdapter.notifyDataSetChanged();
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -109,21 +105,21 @@ public class MessageFragment extends Fragment {
             });
         }
     };
-    public void setUser(){
-        if(FirebaseAuth.getInstance().getCurrentUser()!=null){
-            mData.child("User/"+FirebaseAuth.getInstance().getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                Toast.makeText(context,dataSnapshot.getValue().toString(),Toast.LENGTH_LONG).show();
-                    user = dataSnapshot.getValue(User.class);
-                }
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                }
-            });
-        }
-    }
+//    public void setUser(){
+//        if(FirebaseAuth.getInstance().getCurrentUser()!=null){
+//            mData.child("User/"+FirebaseAuth.getInstance().getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
+//                @Override
+//                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+////                Toast.makeText(context,dataSnapshot.getValue().toString(),Toast.LENGTH_LONG).show();
+//                    user = dataSnapshot.getValue(User.class);
+//                }
+//                @Override
+//                public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//                }
+//            });
+//        }
+//    }
     private void scrollMyListViewToBottom() {
         listViewMessage.post(new Runnable() {
             @Override

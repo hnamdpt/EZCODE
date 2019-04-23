@@ -31,12 +31,6 @@
                     android:fontFamily="sans-serif-medium"
                     />
             </android.support.v7.widget.Toolbar>
-        <!--<FrameLayout-->
-            <!--android:id="@+id/fragment_lesson_content"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="match_parent">-->
-
-        <!--</FrameLayout>-->
         <WebView
             android:layout_width="match_parent"
             android:layout_height="match_parent"

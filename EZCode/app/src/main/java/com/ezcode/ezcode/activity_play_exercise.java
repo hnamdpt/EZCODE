@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,6 +27,7 @@ public class activity_play_exercise extends AppCompatActivity {
     DatabaseReference mData;
     TextView tv_question,tv_answerA,tv_answerB,tv_answerC,tv_answerD,tv_titleQuestion,tv_coutQuestion;
     ArrayList<Test> listTest;
+    Button btn_goExercise;
     int countQuestion = 0;
     int score=0;
     Handler handler = new Handler();
@@ -34,8 +36,6 @@ public class activity_play_exercise extends AppCompatActivity {
         public void run() {
             countQuestion++;
             int x=countQuestion+1;
-
-
             if(countQuestion<listTest.size()){
                 setTest(countQuestion);
                 tv_titleQuestion.setText("Question "+x);
@@ -43,6 +43,10 @@ public class activity_play_exercise extends AppCompatActivity {
             }
             if(countQuestion>=listTest.size()){
                 Toast.makeText(activity_play_exercise.this,"Correct: "+ score+" / "+listTest.size(),Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(activity_play_exercise.this,activity_result_exercise.class);
+                intent.putExtra("total",listTest.size());
+                intent.putExtra("correct",score);
+                startActivity(intent);
             }
             if(x<listTest.size()){
 
@@ -55,11 +59,20 @@ public class activity_play_exercise extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play_exercise);
         Intent intent = getIntent();
+        btn_goExercise =findViewById(R.id.btn_goExercise);
         setView();
         listTest = new ArrayList<Test>();
         String exercise = intent.getStringExtra("exercise");
         mData = FirebaseDatabase.getInstance().getReference("/Category");
         handlerClickAnswer();
+        btn_goExercise.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(activity_play_exercise.this,activity_exercise.class);
+                startActivity(intent);
+            }
+        });
+
         mData.child(exercise).addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
@@ -142,8 +155,7 @@ public class activity_play_exercise extends AppCompatActivity {
                    if(countQuestion<listTest.size()){
                        if(listTest.get(countQuestion).getCorrect().equals("AnswerA")){
                            score++;
-                           tv_answerA.setBackgroundResource(R.drawable.ex2);
-
+                           tv_answerA.setBackgroundResource(R.drawable.ex2_correct);
 
                        }else{
                            tv_answerA.setBackgroundResource(R.drawable.ex2_wrong);

@@ -1,14 +1,143 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:background="#00BCD4">
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#05A2B8"
+        android:id="@+id/toolbar_practice"
+        android:elevation="4dp"
 
 
-    <TextView
+        >
+        <Button
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/ic_back"
+            android:textColor="#000"
+            android:id="@+id/btn_goExercise"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="EXAMNINATION"
+            android:layout_gravity="center"
+            android:id="@+id/toolbar_title"
+            android:textSize="20sp"
+            android:textColor="#fff"
+            android:fontFamily="sans-serif-medium"
+
+            />
+
+    </android.support.v7.widget.Toolbar>
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Đây là activity examination"
         android:layout_centerInParent="true"
-        android:textSize="30sp"
-        />
+        android:orientation="vertical"
+        android:layout_below="@+id/toolbar_practice"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="waiting"
+            android:textSize="50sp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="50dp"
+            android:textColor="#fff"
+            android:id="@+id/tv_countQuestion"
+            />
+
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_height="114dp"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:background="@drawable/ex1"
+            android:padding="10dp"
+            android:textAlignment="center"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Question 1"
+                android:id="@+id/tv_title_question"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Wating..."
+                android:textStyle="bold"
+                android:id="@+id/tv_question"
+                />
+        </LinearLayout>
+
+        <TextView
+            android:background="@drawable/ex2"
+            android:layout_width="300dp"
+            android:layout_height="74dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="1px"
+            android:text="Wating..."
+            android:textAlignment="center"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:id="@+id/tv_answerA"
+            />
+
+        <TextView
+            android:background="@drawable/ex3"
+            android:layout_width="300dp"
+            android:layout_height="74dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="1px"
+            android:text="Wating..."
+            android:textAlignment="center"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:id="@+id/tv_answerB"
+            ></TextView>
+
+        <TextView
+            android:background="@drawable/ex3"
+            android:layout_width="300dp"
+            android:layout_height="74dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="1px"
+            android:text="Wating..."
+            android:textAlignment="center"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:id="@+id/tv_answerC"
+            />
+
+        <TextView
+            android:background="@drawable/ex4"
+            android:layout_width="300dp"
+            android:layout_height="74dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="1px"
+            android:text="Wating..."
+            android:textAlignment="center"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:id="@+id/tv_answerD"
+            />
+        <TextView
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="120"
+            android:textSize="30sp"
+            android:layout_gravity="center"
+            android:textColor="#fff"
+            android:id="@+id/tv_countDownTime"
+            android:visibility="invisible"
+            />
+    </LinearLayout>
+
+
 </RelativeLayout>

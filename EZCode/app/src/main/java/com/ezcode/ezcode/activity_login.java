@@ -131,7 +131,7 @@ public class activity_login extends AppCompatActivity {
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(activity_login.this,"loi cmnr",Toast.LENGTH_LONG).show();
+                        Toast.makeText(activity_login.this,"loi",Toast.LENGTH_LONG).show();
                         Log.e("ERROR_EDMT",e.getMessage());
 
                     }
@@ -139,9 +139,6 @@ public class activity_login extends AppCompatActivity {
             @Override
             public void onSuccess(AuthResult authResult) {
                 String email = authResult.getUser().getEmail();
-                Toast.makeText(activity_login.this,"LOGIN WITH EMAIL: "+email,Toast.LENGTH_LONG).show();
-
-
                 FirebaseUser user = mAuth.getCurrentUser();
 
                 boolean isNewUser = authResult.getAdditionalUserInfo().isNewUser();

@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="11"
+    android:background="#fff"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_practice"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#FFFFFF"
+        android:elevation="4dp"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:id="@+id/toolbar_title_setting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="sans-serif-medium"
+            android:text="Extension"
+            android:textColor="#686868"
+            android:textSize="20sp"
+
+            />
+
+    </android.support.v7.widget.Toolbar>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Setting"
+        android:textColor="#2196F3"
+        android:textSize="20sp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="5dp"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        android:layout_marginTop="20dp"
+        android:paddingRight="20sp"
+        android:paddingLeft="20sp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Language"
+            android:textSize="20sp"
+            android:layout_weight="1"
+            android:textColor="#686868"
+            />
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/spn_language"
+            android:layout_weight="1"
+            >
+        </Spinner>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="9"
+        android:paddingRight="20dp"
+        android:paddingLeft="20dp"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="About Ezcode"
+            android:textColor="#03A9F4"
+            android:textSize="20sp"
+
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Easy Learning"
+            android:textStyle="bold"
+            android:textColor="#686868"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ezcode has focus on simplicity\nEzcode practice easy and straight-forward learning.\nEzcode' tutorials start from basic level and move all the way up to professional references."
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ezcode is FREE"
+            android:textStyle="bold"
+            android:textColor="#686868"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ezcode is, and will always be, a completely free developers resource."
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Many people work very hard to ensure Ezcode remains useful, educational, updated, and interesting."
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="You Can Help"
+            android:textColor="#03A9F4"
+            android:textSize="20sp"
+
+            android:layout_marginTop="20dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="If you find an error, or a broken lesson or you want to ask something about Ezcode, please tell us about it by click below button:"
+            />
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_below="@id/linlay1"
+            android:fontFamily="sans-serif-medium"
+            android:background="@drawable/in_call_435414"
+            android:layout_centerHorizontal="true"
+            android:textSize="16sp"
+            android:id="@+id/btnCall"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Calling..."
+                android:layout_gravity="center"
+                />
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_below="@id/linlay1"
+            android:fontFamily="sans-serif-medium"
+            android:background="@drawable/in_call_down"
+            android:layout_centerHorizontal="true"
+            android:textSize="16sp"
+            android:id="@+id/btnCallDown"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            />
+    </LinearLayout>
+    <Button
+        android:layout_marginTop="5dp"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_below="@id/linlay1"
+        android:text="Logout"
+        android:textColor="#fff"
+        android:fontFamily="sans-serif-medium"
+        android:background="#FF9800"
+        android:layout_centerHorizontal="true"
+        android:textSize="16sp"
+        android:id="@+id/btn_logout"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_gravity="center_horizontal"
+        />
+
+</LinearLayout>

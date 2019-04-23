@@ -15,9 +15,16 @@ import android.widget.Toast;
 
 import com.ezcode.ezcode.model.Chat;
 import com.ezcode.ezcode.model.ChatAdapter;
+import com.ezcode.ezcode.model.User;
 import com.facebook.login.LoginManager;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -33,6 +40,10 @@ public class MainActivity extends AppCompatActivity {
     BottomNavigationView buttonNavigation;
     public static ArrayList<Chat> arrChat;
     public  static Socket mSocket;
+    public static User user;
+    public static boolean isFirstConnect= true;
+    FirebaseAuth mAuth;
+    DatabaseReference mData;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,36 +54,34 @@ public class MainActivity extends AppCompatActivity {
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }
-        mSocket.connect();
+        mData = FirebaseDatabase.getInstance().getReference();
+        mAuth= FirebaseAuth.getInstance();
+
+        if(mSocket.connected()){
+            mSocket.disconnect();
+        }else{
+            mSocket.connect();
+        }
         buttonNavigation = (BottomNavigationView)findViewById(R.id.navigation_butttom);
         buttonNavigation.setOnNavigationItemSelectedListener(navListen);
         buttonNavigation.setSelectedItemId(R.id.nav_home);
-        mSocket.on("server-send-chat",onReciveChat);
-
-//        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_main_content,new HomeFragment()).commit();
-    }
-    private Emitter.Listener onReciveChat = new Emitter.Listener() {
-        @Override
-        public void call(final Object... args) {
-            if(MainActivity.this == null)
-                return;
-            MainActivity.this.runOnUiThread(new Runnable() {
+        if(FirebaseAuth.getInstance().getCurrentUser()!=null){
+            mData.child("User/"+FirebaseAuth.getInstance().getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
                 @Override
-                public void run() {
-                    JSONObject object = (JSONObject) args[0];
-                    try {
-                        String chatJson = (String)object.getString("noidung");
-                        Gson gson = new Gson();
-                        Chat chat = gson.fromJson(chatJson,Chat.class);
-                        MainActivity.arrChat.add(chat);
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    user = dataSnapshot.getValue(User.class);
+                }
 
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
                 }
             });
         }
-    };
+//        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_main_content,new HomeFragment()).commit();
+    }
+
+
     private BottomNavigationView.OnNavigationItemSelectedListener navListen = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -99,7 +108,9 @@ public class MainActivity extends AppCompatActivity {
             FirebaseAuth.getInstance().signOut();
             LoginManager.getInstance().logOut();
             Intent intent = new Intent(MainActivity.this,activity_login.class);
+            mSocket.disconnect();
             startActivity(intent);
+            finish();
         }
 
         this.doubleBackToExitPressedOnce = true;

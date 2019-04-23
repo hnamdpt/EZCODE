@@ -27,26 +27,7 @@
                 android:id="@+id/lesson_html_5"
                 android:title="Html color">
             </item>
-            <item
-                android:id="@+id/lesson_html_6"
-                android:title="Html responsive">
-            </item>
-            <item
-                android:id="@+id/lesson_html_7"
-                android:title="Html centerd">
-            </item>
-            <item
-                android:id="@+id/lesson_html_8"
-                android:title="Heading">
-            </item>
-            <item
-                android:id="@+id/lesson_html_9"
-                android:title="Link">
-            </item>
-            <item
-                android:id="@+id/lesson_html_10"
-                android:title="Line breaks">
-            </item>
+
         </menu>
     </item>
     <item android:title="CSS"
@@ -55,44 +36,25 @@
         <menu>
             <item
                 android:id="@+id/lesson_css_1"
-                android:title="Css1 ">
+                android:title="Intro CSS">
             </item>
             <item
                 android:id="@+id/lesson_css_2"
-                android:title="Css2">
+                android:title="Use CSS">
             </item>
             <item
                 android:id="@+id/lesson_css_3"
-                android:title="Css3">
+                android:title="CSS Syntax">
             </item>
             <item
                 android:id="@+id/lesson_css_4"
-                android:title="Css4">
+                android:title="CSS Selector">
             </item>
             <item
                 android:id="@+id/lesson_css_5"
-                android:title="Css5">
+                android:title="CSS Style">
             </item>
-            <item
-                android:id="@+id/lesson_css_6"
-                android:title="Css6">
-            </item>
-            <item
-                android:id="@+id/lesson_css_7"
-                android:title="Css7">
-            </item>
-            <item
-                android:id="@+id/lesson_css_8"
-                android:title="Css8">
-            </item>
-            <item
-                android:id="@+id/lesson_css_9"
-                android:title="Css9">
-            </item>
-            <item
-                android:id="@+id/lesson_css_10"
-                android:title="Css10">
-            </item>
+
         </menu>
     </item>
     <item android:title="js"
@@ -101,44 +63,25 @@
         <menu>
             <item
                 android:id="@+id/lesson_js_1"
-                android:title="Javascript">
+                android:title="Intro Javascript">
             </item>
             <item
                 android:id="@+id/lesson_js_2"
-                android:title="Javascript">
+                android:title="Js Syntax">
             </item>
             <item
                 android:id="@+id/lesson_js_3"
-                android:title="Javascript">
+                android:title="Js Variable">
             </item>
             <item
                 android:id="@+id/lesson_js_4"
-                android:title="Javascript">
+                android:title="Js Operator">
             </item>
             <item
                 android:id="@+id/lesson_js_5"
-                android:title="Javascript">
+                android:title="Js Function">
             </item>
-            <item
-                android:id="@+id/lesson_js_6"
-                android:title="Javascript">
-            </item>
-            <item
-                android:id="@+id/lesson_js_7"
-                android:title="Javascript">
-            </item>
-            <item
-                android:id="@+id/lesson_js_8"
-                android:title="Javascript">
-            </item>
-            <item
-                android:id="@+id/lesson_js_9"
-                android:title="Javascript">
-            </item>
-            <item
-                android:id="@+id/lesson_js_10"
-                android:title="Javascript">
-            </item>
+
         </menu>
     </item>
 </menu>

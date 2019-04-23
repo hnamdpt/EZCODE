@@ -9,10 +9,13 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -38,6 +41,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ProfileFragment extends Fragment {
     Button logout,btn_save;
+    ImageButton btn_setting;
     Activity context;
     CircleImageView profile_image;
     DatabaseReference mData;
@@ -61,13 +65,23 @@ public class ProfileFragment extends Fragment {
         displayName = (TextView)view.findViewById(R.id.profile_displayName);
         userPoint = (TextView)view.findViewById(R.id.user_point);
         btn_save = (Button)view.findViewById(R.id.btn_save_profile);
+        btn_setting =(ImageButton) view.findViewById(R.id.btn_setting);
         mAuth= FirebaseAuth.getInstance();
+
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FirebaseAuth.getInstance().signOut();
                 LoginManager.getInstance().logOut();
                  Intent intent = new Intent(context,activity_login.class);
+                startActivity(intent);
+            }
+        });
+
+        btn_setting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context,activity_setting.class);
                 startActivity(intent);
             }
         });
@@ -119,6 +133,7 @@ public class ProfileFragment extends Fragment {
                                     Toast.makeText(context,user.getAvatarUrl(),Toast.LENGTH_LONG).show();
                                     FirebaseUser usercurrent = mAuth.getCurrentUser();
                                     mData.child("User").child(usercurrent.getUid()).setValue(user);
+                                    MainActivity.user =user;
 
                                 }
                             });
@@ -126,6 +141,7 @@ public class ProfileFragment extends Fragment {
                     });
                 }else{
                     mData.child("User").child(usercurrent.getUid()).setValue(user);
+                    MainActivity.user =user;
                 }
 
 
@@ -137,6 +153,7 @@ public class ProfileFragment extends Fragment {
 
 
     }
+
 
     private void openGalary() {
         Intent intent = new Intent();
