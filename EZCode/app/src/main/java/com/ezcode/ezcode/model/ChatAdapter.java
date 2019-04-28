@@ -5,8 +5,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.ezcode.ezcode.MainActivity;
 import com.ezcode.ezcode.R;
 import com.squareup.picasso.Picasso;
 
@@ -47,6 +49,7 @@ public class ChatAdapter extends ArrayAdapter<Chat> {
         Chat chat= arrChat.get(position);
 
         Picasso.with(context).load(chat.getUserAvatar()).into(viewHolder.avatar);
+
         viewHolder.username.setText(chat.getUserName());
         viewHolder.content.setText(chat.getChatContent());
        return convertView;

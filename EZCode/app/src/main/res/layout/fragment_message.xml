@@ -54,7 +54,7 @@
        <EditText
            android:layout_width="0dp"
            android:layout_height="wrap_content"
-           android:minHeight="40dp"
+           android:minHeight="50dp"
            android:layout_weight="10"
            android:id="@+id/edit_message"
            android:background="@drawable/edit_chat_bg"

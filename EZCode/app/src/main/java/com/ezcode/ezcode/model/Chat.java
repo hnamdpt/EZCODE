@@ -4,15 +4,16 @@ public class Chat {
     private String userAvatar;
     private String userName;
     private String chatContent;
-
+    private String userEmail;
     public Chat() {
 
     }
 
-    public Chat(String userAvatar, String userName, String chatContent) {
+    public Chat(String userAvatar, String userName, String chatContent, String userEmail) {
         this.userAvatar = userAvatar;
         this.userName = userName;
         this.chatContent = chatContent;
+        this.userEmail = userEmail;
     }
 
     public String getUserAvatar() {
@@ -37,5 +38,13 @@ public class Chat {
 
     public void setChatContent(String chatContent) {
         this.chatContent = chatContent;
+    }
+
+    public String getUserEmail() {
+        return userEmail;
+    }
+
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
     }
 }
