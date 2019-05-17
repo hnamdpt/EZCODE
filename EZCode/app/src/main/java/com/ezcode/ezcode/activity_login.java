@@ -149,7 +149,6 @@ public class activity_login extends AppCompatActivity {
                     int _point = 0;
                     User newUser = new User(_displayName,_email,_avatarUrl,_point);
                     mData.child("User").child(user.getUid()).setValue(newUser);
-
                 }
                 Intent intent = new Intent(activity_login.this, MainActivity.class);
                 startActivity(intent);

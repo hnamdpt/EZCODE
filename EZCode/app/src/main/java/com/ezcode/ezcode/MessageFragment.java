@@ -2,6 +2,9 @@ package com.ezcode.ezcode;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Debug;
 import android.support.annotation.NonNull;
@@ -40,6 +43,7 @@ import com.sinch.android.rtc.calling.CallClient;
 import com.sinch.android.rtc.calling.CallClientListener;
 import com.sinch.android.rtc.calling.CallListener;
 import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Target;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -145,7 +149,23 @@ public class MessageFragment extends Fragment {
         txtName.setText(userCalled.getUserName());
         CircleImageView circleAvatar = dialog.findViewById(R.id.ImgAvatar);
         Picasso.with(getContext()).load(userCalled.getUserAvatar()).into(circleAvatar);
+        LinearLayout llLayout = dialog.findViewById(R.id.llLayout);
+        Picasso.with(getContext()).load(userCalled.getUserAvatar()).into(new Target() {
+            @Override
+            public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
+                llLayout.setBackground(new BitmapDrawable(bitmap));
+            }
 
+            @Override
+            public void onBitmapFailed(Drawable errorDrawable) {
+
+            }
+
+            @Override
+            public void onPrepareLoad(Drawable placeHolderDrawable) {
+
+            }
+        });
         btnCall.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -221,6 +241,7 @@ public class MessageFragment extends Fragment {
             Button acceptBtn = dialog.findViewById(R.id.btnAcceptCall);
             CircleImageView circleAvatar = dialog.findViewById(R.id.ImgAvatar);
             TextView txtName = dialog.findViewById(R.id.txtCalledName);
+
             for(int i=0;i<MainActivity.arrChat.size();i++){
                 if(MainActivity.arrChat.get(i).getUserEmail().equals(emailUserCalled)){
                     Chat userCalled=new Chat();
@@ -228,6 +249,23 @@ public class MessageFragment extends Fragment {
                    // Toast.makeText(getContext(),"co user trung",Toast.LENGTH_LONG).show();
                     txtName.setText(userCalled.getUserName());
                     Picasso.with(getContext()).load(userCalled.getUserAvatar()).into(circleAvatar);
+                    LinearLayout llLayout = dialog.findViewById(R.id.llLayout);
+                    Picasso.with(getContext()).load(userCalled.getUserAvatar()).into(new Target() {
+                        @Override
+                        public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
+                            llLayout.setBackground(new BitmapDrawable(bitmap));
+                        }
+
+                        @Override
+                        public void onBitmapFailed(Drawable errorDrawable) {
+
+                        }
+
+                        @Override
+                        public void onPrepareLoad(Drawable placeHolderDrawable) {
+
+                        }
+                    });
                     break;
                 }
             }
